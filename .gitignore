@@ -1,0 +1,15 @@
+#Android/Gradle：
+.gradle/
+.idea/
+local.properties
+**/build/
+captures/
+*.log
+#测试/其他：
+*.iml
+*.apk
+*.aab
+#Node 示例
+node_modules/
+
+app/src/main/jniLibs/*.so
