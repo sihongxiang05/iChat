@@ -1,7 +1,7 @@
 # iChat - 一款基于 Mars 开发的即时通讯 Android App
 
 ## 项目亮点
-- 端到端即时通讯：基于自定义 TCP 帧协议与腾讯 Mars STN（项目内置示例）
+- 端到端即时通讯：基于自定义 TCP 帧协议与腾讯 Mars STN
 - 离线消息存储并转发：服务端维护离线队列，用户上线即推送未读消息
 - 本地持久化与会话回放：Room 存储聊天记录与消息状态，退出/重登保留历史
 - 现代 UI：Jetpack Compose 构建聊天气泡、独立聊天页、列表与表单
@@ -11,7 +11,7 @@
 项目分为客户端和服务端两部分。
 
 ### 客户端 (Android App)
-- 技术栈：Kotlin、Jetpack Compose、Room、StateFlow/SharedFlow、HttpURLConnection、（示例）Mars STN
+- 技术栈：Kotlin、Jetpack Compose、Room、StateFlow/SharedFlow、HttpURLConnection、Mars STN
 - 模块划分：
   - `auth/` 登录注册与服务器地址管理（`AuthApi.kt`、`LoginViewModel.kt`、`LoginScreen.kt`）
   - `friend/` 好友列表与添加、聊天入口（`FriendApi.kt`、`FriendViewModel.kt`、`FriendScreen.kt`）
@@ -38,10 +38,10 @@
   - `ChatScreen`：顶部返回箭头、底部固定输入与发送、气泡样式左/右对齐、时间戳与状态展示
 
 ### 服务端 (Node.js)
-- 认证服务（示例）：`docs/mock-auth-server.js`
-  - `POST /api/auth/login`、`POST /api/auth/register` → 返回 `{"token":"demo-token"}`（示例）
+- 认证服务：`docs/mock-auth-server.js`
+  - `POST /api/auth/login`、`POST /api/auth/register` → 返回 `{"token":"demo-token"}`
   - 内存用户表与会话映射，便于本地联调
-- TCP 路由服务（示例）：`docs/mock-tcp-router.js`
+- TCP 路由服务：`docs/mock-tcp-router.js`
   - 在线转发：对端在线直接转发 Type 2，并回 Type 3/4 给发送方
   - 离线队列：对端离线入队，登录后推送 Type 5，并通知发送方 Type 4（若在线）
   - 仅用于演示；生产建议接入数据库并启用鉴权/ACK持久化
@@ -62,7 +62,7 @@
 ### 1. 环境准备
 - Android Studio（JDK 11）、Android SDK、Gradle、Kotlin
 - Node.js 16+（用于示例服务端）
-- 两台 Android 模拟器（或一台真机 + 一台模拟器）
+- 多台 Android 模拟器
 
 ### 2. 编译 Mars 依赖 
 - 项目内已包含演示所需的 Mars 原生库（`libmarsxlog.so`、`libmarsstn.so`），并在 `MainActivity.kt` 中示例调用
@@ -91,7 +91,7 @@
 ## 作业说明
 - 目标：在 Android 上实现基础 IM 能力与离线消息演示；完成客户端 UI/协议/持久化与服务端最小原型
 - 已实现：
-  - 登录/注册（示例后端）与服务器地址管理
+  - 登录/注册与服务器地址管理
   - 好友列表与添加、联系人点击进入独立聊天页
   - TCP 帧协议（type 1/2/3/4/5）与 ACK 状态机
   - Room 持久化、会话查询与时间戳格式化
